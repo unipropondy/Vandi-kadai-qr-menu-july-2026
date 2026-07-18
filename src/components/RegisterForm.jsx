@@ -197,15 +197,15 @@ const RegisterForm = () => {
               onChange={(e) => setCountryCode(e.target.value)}
               disabled={isFormDisabled}
             >
-              <option value="+65">🇸🇬 +65</option>
-              <option value="+91">🇮🇳 +91</option>
-              <option value="+60">🇲🇾 +60</option>
-              <option value="+62">🇮🇩 +62</option>
-              <option value="+63">🇵🇭 +63</option>
-              <option value="+86">🇨🇳 +86</option>
-              <option value="+1">🇺🇸 +1</option>
-              <option value="+44">🇬🇧 +44</option>
-              <option value="+61">🇦🇺 +61</option>
+              <option value="+65">+65</option>
+              <option value="+91">+91</option>
+              <option value="+60">+60</option>
+              <option value="+62">+62</option>
+              <option value="+63">+63</option>
+              <option value="+86">+86</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+              <option value="+61">+61</option>
             </select>
             <input
               id="mobile"
