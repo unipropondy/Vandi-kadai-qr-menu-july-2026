@@ -157,7 +157,7 @@
   border: 1.5px solid rgba(255, 255, 255, 0.08);
   border-right: none;
   height: 57px;
-  padding: 0 12px 0 54px;
+  padding: 0 12px 0 44px;
   border-radius: 18px 0 0 18px;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
@@ -173,7 +173,8 @@
   background-repeat: no-repeat;
   background-position: calc(100% - 10px) center;
   background-size: 16px;
-  min-width: 110px;
+  width: 95px;
+  min-width: 95px;
 }
 
 .country-select option {
