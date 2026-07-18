@@ -10,6 +10,7 @@ const RegisterForm = () => {
   const [campaign, setCampaign] = useState('');
   const [isAnimating, setIsAnimating] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [countryCode, setCountryCode] = useState('+65');
 
   const {
     register,
@@ -39,7 +40,7 @@ const RegisterForm = () => {
   const onSubmit = async (data) => {
     const payload = {
       name: data.name.trim(),
-      mobile: data.mobile.trim(),
+      mobile: `${countryCode}${data.mobile.trim()}`,
       email: data.email.trim() || '',
       promoCode: data.promoCode.trim() || '',
       address: data.address ? data.address.trim() : '',
@@ -188,14 +189,29 @@ const RegisterForm = () => {
         {/* Mobile Number */}
         <div className="form-group">
           <label htmlFor="mobile">Mobile Number <span className="required">*</span></label>
-          <div className="input-wrapper">
+          <div className="input-wrapper mobile-wrapper">
             <Phone className="input-icon" size={18} />
+            <select
+              className="country-select"
+              value={countryCode}
+              onChange={(e) => setCountryCode(e.target.value)}
+              disabled={isFormDisabled}
+            >
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+60">🇲🇾 +60</option>
+              <option value="+62">🇮🇩 +62</option>
+              <option value="+63">🇵🇭 +63</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+            </select>
             <input
               id="mobile"
               type="tel"
-              placeholder="10-digit mobile number"
+              placeholder="Mobile number"
               disabled={isFormDisabled}
-              maxLength={10}
               className={errors.mobile ? 'input-error' : ''}
               onKeyDown={(e) => {
                 if (
@@ -209,8 +225,8 @@ const RegisterForm = () => {
               {...register('mobile', {
                 required: 'Mobile number is required',
                 pattern: {
-                  value: /^[0-9]{10}$/,
-                  message: 'Mobile number must be exactly 10 digits'
+                  value: /^[0-9]{5,15}$/,
+                  message: 'Please enter a valid mobile number'
                 }
               })}
             />
