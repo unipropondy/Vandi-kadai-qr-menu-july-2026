@@ -174,8 +174,9 @@ app.post('/api/customer/register', async (req, res) => {
     return res.status(400).json({ success: false, message: 'Full name is required.' });
   }
 
-  if (!mobile || !/^[0-9]{10}$/.test(mobile.trim())) {
-    return res.status(400).json({ success: false, message: 'Mobile number must be exactly 10 digits.' });
+  const testMobile = mobile ? mobile.trim().replace(/[\s\-\+]/g, '') : '';
+  if (!mobile || !/^[0-9]{5,15}$/.test(testMobile)) {
+    return res.status(400).json({ success: false, message: 'Please enter a valid mobile number.' });
   }
 
   if (email && email.trim() !== '') {

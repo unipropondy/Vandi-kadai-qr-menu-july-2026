@@ -316,7 +316,7 @@ const RegisterForm = () => {
             <input
               id="promoCode"
               type="text"
-              placeholder="e.g. PRO123"
+              placeholder="Enter promo code"
               disabled={isFormDisabled}
               className={errors.promoCode ? 'input-error' : ''}
               {...register('promoCode', {
