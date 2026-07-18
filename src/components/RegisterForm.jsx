@@ -11,6 +11,18 @@ const RegisterForm = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [countryCode, setCountryCode] = useState('+65');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Close custom dropdown when clicking outside
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (isDropdownOpen && !e.target.closest('.custom-select-container')) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, [isDropdownOpen]);
 
   const {
     register,
@@ -191,24 +203,43 @@ const RegisterForm = () => {
           <label htmlFor="mobile">Mobile Number <span className="required">*</span></label>
           <div className="input-wrapper mobile-wrapper">
             <Phone className="input-icon" size={18} />
-            <select
-              className="country-select-hidden"
-              value={countryCode}
-              onChange={(e) => setCountryCode(e.target.value)}
-              disabled={isFormDisabled}
-            >
-              <option value="+65">SG +65</option>
-              <option value="+91">IND +91</option>
-              <option value="+60">MY +60</option>
-              <option value="+62">ID +62</option>
-              <option value="+63">PH +63</option>
-              <option value="+86">CN +86</option>
-              <option value="+1">US +1</option>
-              <option value="+44">UK +44</option>
-              <option value="+61">AUS +61</option>
-            </select>
-            <div className="country-code-display">
-              {countryCode} <span className="dropdown-arrow">▼</span>
+            <div className="custom-select-container">
+              <button
+                type="button"
+                className={`custom-select-trigger ${isDropdownOpen ? 'active' : ''}`}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                disabled={isFormDisabled}
+              >
+                <span>{countryCode}</span>
+                <span className={`custom-select-arrow ${isDropdownOpen ? 'open' : ''}`}>▼</span>
+              </button>
+
+              {isDropdownOpen && (
+                <div className="custom-select-options">
+                  {[
+                    { code: '+65', label: 'SG +65' },
+                    { code: '+91', label: 'IND +91' },
+                    { code: '+60', label: 'MY +60' },
+                    { code: '+62', label: 'ID +62' },
+                    { code: '+63', label: 'PH +63' },
+                    { code: '+86', label: 'CN +86' },
+                    { code: '+1', label: 'US +1' },
+                    { code: '+44', label: 'UK +44' },
+                    { code: '+61', label: 'AUS +61' }
+                  ].map((opt) => (
+                    <div
+                      key={opt.code}
+                      className={`custom-select-option ${countryCode === opt.code ? 'selected' : ''}`}
+                      onClick={() => {
+                        setCountryCode(opt.code);
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      {opt.label}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <input
               id="mobile"
