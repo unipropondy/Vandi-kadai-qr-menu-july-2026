@@ -1,0 +1,176 @@
+/* App.css */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 16px;
+  background: radial-gradient(circle at top, #1c1c1c 0%, #0d0d0d 100%);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Decorative glassmorphic background circles with intense neon gold pulse */
+.blur-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.25;
+  animation: pulseGlow 8s infinite alternate ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.15) translateY(-20px);
+    opacity: 0.35;
+  }
+}
+
+.circle-1 {
+  width: 450px;
+  height: 450px;
+  background: rgba(212, 175, 55, 0.3); /* Gold Glow */
+  top: -120px;
+  right: -50px;
+}
+
+.circle-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(170, 124, 17, 0.2);
+  bottom: -120px;
+  left: -50px;
+  animation-delay: -4s;
+}
+
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  z-index: 1;
+  animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000; /* Solid black matching logo background */
+  padding: 0;
+  border-radius: 28px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8),
+              0 0 25px rgba(212, 175, 55, 0.25),
+              inset 0 0 15px rgba(255, 255, 255, 0.02);
+  border: 2px solid rgba(212, 175, 55, 0.45);
+  width: 220px;
+  height: 220px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.logo-container::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(135deg, #ffd700, transparent, #aa7c11);
+  border-radius: 32px;
+  z-index: -1;
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+}
+
+.logo-container:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.9),
+              0 0 35px rgba(212, 175, 55, 0.45);
+  border-color: rgba(212, 175, 55, 0.7);
+}
+
+.logo-container:hover::before {
+  opacity: 0.6;
+}
+
+.company-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill the square container completely */
+  display: block;
+}
+
+.app-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  flex-grow: 1;
+  margin: 12px 0 36px 0;
+}
+
+.app-footer {
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  z-index: 1;
+}
+
+.app-footer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: #666666;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile responsive optimizations */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 24px 12px;
+  }
+  
+  .logo-container {
+    width: 160px;
+    height: 160px;
+    padding: 0;
+    border-radius: 20px;
+  }
+
+  .logo-container::before {
+    border-radius: 24px;
+  }
+
+  .company-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .app-main {
+    margin: 8px 0 24px 0;
+  }
+}
