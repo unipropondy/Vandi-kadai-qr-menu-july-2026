@@ -192,7 +192,7 @@ const RegisterForm = () => {
           <div className="input-wrapper mobile-wrapper">
             <Phone className="input-icon" size={18} />
             <select
-              className="country-select"
+              className="country-select-hidden"
               value={countryCode}
               onChange={(e) => setCountryCode(e.target.value)}
               disabled={isFormDisabled}
@@ -207,6 +207,9 @@ const RegisterForm = () => {
               <option value="+44">UK +44</option>
               <option value="+61">AUS +61</option>
             </select>
+            <div className="country-code-display">
+              {countryCode} <span className="dropdown-arrow">▼</span>
+            </div>
             <input
               id="mobile"
               type="tel"
