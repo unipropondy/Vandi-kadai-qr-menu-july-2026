@@ -3,10 +3,20 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const sql = require('mssql');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Configure Email SMTP Transporter
+const mailTransporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 // Enable CORS for frontend requests
 app.use(cors({
@@ -98,6 +108,56 @@ async function connectDatabase() {
 connectDatabase().then(pool => {
   dbPool = pool;
 });
+
+// Helper to send registration welcome email
+async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.log('⚠️ [Email] SMTP credentials are not configured. Skipping email.');
+    return;
+  }
+
+  const mailOptions = {
+    from: `"Vandi Kadai" <${process.env.EMAIL_USER}>`,
+    to: toEmail,
+    subject: 'Welcome to Vandi Kadai - Registration Successful!',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #d4af37; border-radius: 12px; background-color: #0c0c0c; color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div style="text-align: center; border-bottom: 2px solid #d4af37; padding-bottom: 20px; margin-bottom: 20px;">
+          <h2 style="color: #ffd700; margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 1px;">Vandi Kadai</h2>
+          <p style="color: #a0aec0; margin: 5px 0 0 0; font-size: 14px; font-style: italic;">From the Streets of Tamil Nadu to the Heart of Singapore</p>
+        </div>
+        
+        <p style="font-size: 16px; line-height: 1.6;">Hello <strong>${name}</strong>,</p>
+        
+        <p style="font-size: 15px; line-height: 1.6; color: #e2e8f0;">
+          Thank you for registering with Vandi Kadai! We are excited to welcome you to our rewards program.
+        </p>
+
+        <div style="background-color: #161616; border: 1px dashed #d4af37; border-radius: 10px; padding: 20px; text-align: center; margin: 25px 0;">
+          <p style="margin: 0 0 10px 0; color: #a0aec0; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Your Promo Code</p>
+          <h1 style="color: #ffd700; margin: 0 0 10px 0; font-size: 36px; letter-spacing: 3px; font-weight: 800;">${promoCode}</h1>
+          <p style="margin: 0; color: #16BF78; font-size: 17px; font-weight: bold;">Discount Value: $${parseFloat(promoAmount).toFixed(2)}</p>
+        </div>
+
+        <p style="font-size: 14px; line-height: 1.6; color: #cbd5e0;">
+          Simply present your registered mobile number or show this email to our staff during your next visit to redeem your reward discount!
+        </p>
+
+        <div style="border-top: 1px solid #2d3748; padding-top: 20px; margin-top: 30px; text-align: center; font-size: 11px; color: #718096;">
+          <p style="margin: 0;">© 2026 Vandi Kadai. All rights reserved.</p>
+          <p style="margin: 5px 0 0 0;">This is an automated message. Please do not reply directly to this email.</p>
+        </div>
+      </div>
+    `
+  };
+
+  try {
+    await mailTransporter.sendMail(mailOptions);
+    console.log(`✉️ [Email] Registration welcome email sent successfully to ${toEmail}`);
+  } catch (error) {
+    console.error('❌ [Email] Failed to send email:', error.message);
+  }
+}
 
 // Registration API Endpoint
 app.post('/api/customer/register', async (req, res) => {
@@ -228,6 +288,11 @@ app.post('/api/customer/register', async (req, res) => {
       writeLocalDb(localData);
 
       console.log(`👤 Member Registered in JSON: ${cleanName} (${cleanMobile}) [Promo: ${cleanPromoCode || 'None'}, Amt: ${promoAmount}]`);
+    }
+
+    // Send email asynchronously if email is provided
+    if (cleanEmail !== '') {
+      sendWelcomeEmail(cleanEmail, cleanName, cleanPromoCode, promoAmount);
     }
 
     // Success response
