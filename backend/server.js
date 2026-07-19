@@ -186,10 +186,6 @@ app.post('/api/customer/register', async (req, res) => {
     }
   }
 
-  if (!promoCode || promoCode.trim().length === 0) {
-    return res.status(400).json({ success: false, message: 'Promo code is required.' });
-  }
-
   const cleanName = name.trim();
   const cleanMobile = mobile.trim();
   const cleanEmail = email ? email.trim() : '';

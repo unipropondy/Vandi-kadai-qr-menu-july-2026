@@ -310,7 +310,7 @@ const RegisterForm = () => {
 
         {/* Promo Code */}
         <div className="form-group">
-          <label htmlFor="promoCode">Promo Code <span className="required">*</span></label>
+          <label htmlFor="promoCode">Promo Code <span className="optional">(Optional)</span></label>
           <div className="input-wrapper">
             <Tag className="input-icon" size={18} />
             <input
@@ -319,10 +319,7 @@ const RegisterForm = () => {
               placeholder="Enter promo code"
               disabled={isFormDisabled}
               className={errors.promoCode ? 'input-error' : ''}
-              {...register('promoCode', {
-                required: 'Promo code is required',
-                validate: (value) => value.trim().length > 0 || 'Promo code cannot be empty'
-              })}
+              {...register('promoCode')}
             />
           </div>
           {errors.promoCode && <span className="error-message">{errors.promoCode.message}</span>}
