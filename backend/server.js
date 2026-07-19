@@ -116,6 +116,8 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
     return;
   }
 
+  const hasPromo = promoCode && promoCode.trim() !== '';
+
   const mailOptions = {
     from: `"Vandi Kadai" <${process.env.EMAIL_USER}>`,
     to: toEmail,
@@ -133,6 +135,7 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
           Thank you for registering with Vandi Kadai! We are excited to welcome you to our rewards program.
         </p>
 
+        ${hasPromo ? `
         <div style="background-color: #161616; border: 1px dashed #d4af37; border-radius: 10px; padding: 20px; text-align: center; margin: 25px 0;">
           <p style="margin: 0 0 10px 0; color: #a0aec0; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Your Promo Code</p>
           <h1 style="color: #ffd700; margin: 0 0 10px 0; font-size: 36px; letter-spacing: 3px; font-weight: 800;">${promoCode}</h1>
@@ -142,6 +145,17 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
         <p style="font-size: 14px; line-height: 1.6; color: #cbd5e0;">
           Simply present your registered mobile number or show this email to our staff during your next visit to redeem your reward discount!
         </p>
+        ` : `
+        <div style="background-color: #161616; border: 1px dashed #d4af37; border-radius: 10px; padding: 25px; text-align: center; margin: 25px 0;">
+          <p style="margin: 0; color: #ffd700; font-size: 16px; font-weight: bold; line-height: 1.6;">
+            We look forward to serving you the best authentic dishes. See you soon at Vandi Kadai!
+          </p>
+        </div>
+
+        <p style="font-size: 14px; line-height: 1.6; color: #cbd5e0;">
+          Simply present your registered mobile number or show this email to our staff during your next visit.
+        </p>
+        `}
 
         <div style="border-top: 1px solid #2d3748; padding-top: 20px; margin-top: 30px; text-align: center; font-size: 11px; color: #718096;">
           <p style="margin: 0;">© 2026 Vandi Kadai. All rights reserved.</p>
