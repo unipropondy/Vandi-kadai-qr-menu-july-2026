@@ -1,7 +1,7 @@
 import React from 'react';
 import RegisterForm from './components/RegisterForm';
 import FloatingFoodIcons from './components/FloatingFoodIcons';
-import logo from './assets/logonew.png';
+import logo from './assets/logo.png';
 import './App.css';
 
 function App() {
