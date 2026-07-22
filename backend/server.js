@@ -123,54 +123,87 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
     to: toEmail,
     subject: 'Welcome to LIT - Registration Successful!',
     html: `
-      <div style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 0; border-radius: 14px; background-color: #0b0c10; color: #f3f4f6; box-shadow: 0 15px 35px rgba(0,0,0,0.7); overflow: hidden; border: 2px solid #1f2833;">
-        <!-- Top Neon Accent line -->
-        <div style="height: 5px; background: linear-gradient(90deg, #ff007f, #00f0ff, #ffbc00);"></div>
-        
-        <!-- Mass Header -->
-        <div style="background: #0f111a; padding: 25px 15px; text-align: center; border-bottom: 1px solid #1f2833;">
-          <h1 style="color: #ff007f; margin: 0; font-size: 38px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;">LIT</h1>
-          <p style="color: #00f0ff; margin: 5px 0 0 0; font-size: 13px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 0 8px rgba(0,240,255,0.6);">Little India Twist</p>
+      <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px 20px; background-color: #dce3e1; border-radius: 8px;">
+        <!-- Email Header -->
+        <div style="text-align: center; margin-bottom: 25px;">
+          <h1 style="color: #1e3a5f; margin: 0; font-size: 28px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">LIT</h1>
+          <p style="color: #64748b; margin: 4px 0 0 0; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Little India Twist</p>
         </div>
-        
-        <!-- Content (Tighter Space) -->
-        <div style="padding: 25px 20px; text-align: center;">
-          <p style="font-size: 18px; line-height: 1.4; margin: 0 0 12px 0; font-weight: 800; color: #ffffff;">Hello <span style="color: #00f0ff;">${name}</span>,</p>
-          
-          <p style="font-size: 14px; line-height: 1.5; color: #c5c6c7; margin: 0 0 20px 0;">
+
+        <!-- Greeting -->
+        <div style="background-color: #ffffff; padding: 20px 25px; border-radius: 8px 8px 0 0; border-bottom: 1px solid #f1f5f9;">
+          <p style="font-size: 16px; line-height: 1.5; color: #1e293b; margin: 0;">
+            Hello <strong>${name}</strong>,
+          </p>
+          <p style="font-size: 14px; line-height: 1.5; color: #475569; margin: 6px 0 0 0;">
             Thank you for registering with <strong>LIT</strong>! We are excited to welcome you to our rewards program.
           </p>
+        </div>
 
-          ${hasPromo ? `
-          <!-- Mass Neon Promo Ticket -->
-          <div style="background: #111424; border: 2px solid #ffbc00; border-radius: 12px; padding: 20px 15px; margin: 20px 0; box-shadow: 0 0 15px rgba(255,188,0,0.25);">
-            <p style="margin: 0 0 8px 0; color: #ff007f; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800;">YOUR PROMO CODE</p>
-            <div style="display: inline-block; background-color: #0b0c10; border: 2px dashed #00f0ff; padding: 10px 25px; border-radius: 8px; margin-bottom: 10px; box-shadow: inset 0 0 8px rgba(0,240,255,0.2);">
-              <span style="color: #ffd700; font-size: 32px; letter-spacing: 3px; font-weight: 900; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; text-shadow: 0 0 8px rgba(255,215,0,0.5);">${promoCode}</span>
-            </div>
-            <p style="margin: 5px 0 0 0; color: #00ff66; font-size: 20px; font-weight: 900; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(0,255,102,0.4);">Discount Value: $${parseFloat(promoAmount).toFixed(2)}</p>
-          </div>
+        <!-- Ticket Voucher Section -->
+        <div style="position: relative; background-color: #1e355e; border-radius: 12px; box-shadow: 0 10px 25px rgba(30, 53, 94, 0.15); overflow: hidden; display: block; margin: 0;">
+          
+          <!-- Top & Bottom Cutout Notches -->
+          <div style="position: absolute; top: -10px; right: 110px; width: 20px; height: 20px; background-color: #ffffff; border-radius: 50%; z-index: 10;"></div>
+          <div style="position: absolute; bottom: -10px; right: 110px; width: 20px; height: 20px; background-color: #ffffff; border-radius: 50%; z-index: 10;"></div>
 
-          <p style="font-size: 13px; line-height: 1.5; color: #9ca3af; margin: 0;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+              <!-- Left Column: Food Graphic -->
+              <td width="38%" style="vertical-align: middle; padding: 0; background-color: #162a4d; line-height: 0;">
+                <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=400&q=80" alt="LIT South Indian Dosa" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+              </td>
+
+              <!-- Middle Column: Voucher Details -->
+              <td style="padding: 25px 20px; vertical-align: middle; text-align: left;">
+                <div style="font-family: Georgia, serif; font-size: 18px; font-style: italic; color: #93c5fd; margin-bottom: 2px;">Discount</div>
+                <h2 style="font-size: 26px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">VOUCHER</h2>
+                
+                ${hasPromo ? `
+                <p style="font-size: 11px; line-height: 1.4; color: #cbd5e1; margin: 0 0 15px 0;">
+                  Show this code at the counter to redeem your reward.
+                </p>
+                <div style="margin-bottom: 5px;">
+                  <span style="display: inline-block; background-color: rgba(255,255,255,0.1); border: 1.5px dashed #93c5fd; padding: 6px 16px; border-radius: 4px; font-size: 18px; font-weight: 700; color: #ffffff; letter-spacing: 2px;">
+                    ${promoCode}
+                  </span>
+                </div>
+                <div style="font-size: 22px; font-weight: 800; color: #38bdf8; margin-top: 10px;">
+                  $${parseFloat(promoAmount).toFixed(2)} OFF
+                </div>
+                ` : `
+                <p style="font-size: 13px; line-height: 1.5; color: #cbd5e1; margin: 0 0 10px 0;">
+                  We look forward to serving you the best authentic dishes.
+                </p>
+                <div style="font-size: 18px; font-weight: 800; color: #38bdf8;">
+                  See you soon at LIT!
+                </div>
+                `}
+              </td>
+
+              <!-- Separator Dashed line -->
+              <td width="1" style="border-left: 2px dashed rgba(255, 255, 255, 0.25); padding: 0;"></td>
+
+              <!-- Right Column: Ticket Stub -->
+              <td width="110" style="vertical-align: middle; text-align: center; padding: 15px 10px; background-color: #182c4f;">
+                <div style="writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; text-transform: uppercase; color: #93c5fd; font-weight: bold; letter-spacing: 2px; white-space: nowrap; display: inline-block;">
+                  WELCOME REWARD
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Instructions bottom block -->
+        <div style="background-color: #ffffff; padding: 20px 25px; border-radius: 0 0 8px 8px; border-top: 1px solid #f1f5f9; text-align: center;">
+          <p style="font-size: 13px; line-height: 1.5; color: #64748b; margin: 0;">
             Simply present your registered mobile number or show this email to our staff during your next visit to redeem your reward discount!
           </p>
-          ` : `
-          <!-- Premium Welcome Box (No Promo) -->
-          <div style="background: linear-gradient(135deg, #111424 0%, #0d0f12 100%); border: 2px solid #00f0ff; border-radius: 12px; padding: 20px 15px; margin: 20px 0; box-shadow: 0 0 15px rgba(0,240,255,0.2);">
-            <p style="margin: 0; color: #ffd700; font-size: 15px; font-weight: bold; line-height: 1.6; text-shadow: 0 0 5px rgba(255,215,0,0.3);">
-              We look forward to serving you the best authentic dishes. See you soon at LIT!
-            </p>
-          </div>
-
-          <p style="font-size: 13px; line-height: 1.5; color: #9ca3af; margin: 0;">
-            Simply present your registered mobile number or show this email to our staff during your next visit.
-          </p>
-          `}
         </div>
 
         <!-- Footer -->
-        <div style="background-color: #07080d; padding: 15px 10px; border-top: 1px solid #1f2833; text-align: center; font-size: 11px; color: #666666; line-height: 1.4;">
-          <p style="margin: 0 0 3px 0; color: #888888; font-weight: bold;">© 2026 UNIPRO . All rights reserved.</p>
+        <div style="text-align: center; margin-top: 25px; font-size: 11px; color: #94a3b8; line-height: 1.4;">
+          <p style="margin: 0 0 4px 0; font-weight: bold;">© 2026 UNIPRO . All rights reserved.</p>
           <p style="margin: 0;">This is an automated message. Please do not reply directly to this email.</p>
         </div>
       </div>
