@@ -144,19 +144,19 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
         <div style="position: relative; background-color: #1e355e; border-radius: 12px; box-shadow: 0 10px 25px rgba(30, 53, 94, 0.15); overflow: hidden; display: block; margin: 0;">
           
           <!-- Top & Bottom Cutout Notches -->
-          <div style="position: absolute; top: -10px; right: 110px; width: 20px; height: 20px; background-color: #ffffff; border-radius: 50%; z-index: 10;"></div>
-          <div style="position: absolute; bottom: -10px; right: 110px; width: 20px; height: 20px; background-color: #ffffff; border-radius: 50%; z-index: 10;"></div>
+          <div style="position: absolute; top: -10px; right: 110px; width: 20px; height: 20px; background-color: #dce3e1; border-radius: 50%; z-index: 10;"></div>
+          <div style="position: absolute; bottom: -10px; right: 110px; width: 20px; height: 20px; background-color: #dce3e1; border-radius: 50%; z-index: 10;"></div>
 
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
-            <tr>
+            <tr style="height: 180px;">
               <!-- Left Column: Food Graphic -->
-              <td width="38%" style="vertical-align: middle; padding: 0; background-color: #162a4d; line-height: 0;">
+              <td width="38%" style="vertical-align: middle; padding: 0; background-color: #1e355e; line-height: 0; height: 100%;">
                 <img src="cid:foodImage" alt="LIT Specialty" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
               </td>
 
               <!-- Middle Column: Voucher Details -->
-              <td style="padding: 25px 20px; vertical-align: middle; text-align: left;">
-                <div style="font-family: Georgia, serif; font-size: 18px; font-style: italic; color: #93c5fd; margin-bottom: 2px;">Discount</div>
+              <td style="padding: 20px; vertical-align: middle; text-align: left;">
+                <div style="font-family: Georgia, serif; font-size: 18px; font-style: italic; color: #93c5fd; margin-bottom: 2px;">Promo Code</div>
                 <h2 style="font-size: 26px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">VOUCHER</h2>
                 
                 ${hasPromo ? `
