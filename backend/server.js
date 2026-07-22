@@ -119,20 +119,20 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
   const hasPromo = promoCode && promoCode.trim() !== '';
 
   const mailOptions = {
-    from: `"Vandi Kadai" <${process.env.EMAIL_USER}>`,
+    from: `"LIT" <${process.env.EMAIL_USER}>`,
     to: toEmail,
-    subject: 'Welcome to Vandi Kadai - Registration Successful!',
+    subject: 'Welcome to LIT - Registration Successful!',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #d4af37; border-radius: 12px; background-color: #0c0c0c; color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
         <div style="text-align: center; border-bottom: 2px solid #d4af37; padding-bottom: 20px; margin-bottom: 20px;">
-          <h2 style="color: #ffd700; margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 1px;">Vandi Kadai</h2>
-          <p style="color: #a0aec0; margin: 5px 0 0 0; font-size: 14px; font-style: italic;">From the Streets of Tamil Nadu to the Heart of Singapore</p>
+          <h2 style="color: #ffd700; margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 1px;">LIT</h2>
+          <p style="color: #a0aec0; margin: 5px 0 0 0; font-size: 14px; font-style: italic;">Little India Twist</p>
         </div>
         
         <p style="font-size: 16px; line-height: 1.6;">Hello <strong>${name}</strong>,</p>
         
         <p style="font-size: 15px; line-height: 1.6; color: #e2e8f0;">
-          Thank you for registering with Vandi Kadai! We are excited to welcome you to our rewards program.
+          Thank you for registering with LIT! We are excited to welcome you to our rewards program.
         </p>
 
         ${hasPromo ? `
@@ -148,7 +148,7 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
         ` : `
         <div style="background-color: #161616; border: 1px dashed #d4af37; border-radius: 10px; padding: 25px; text-align: center; margin: 25px 0;">
           <p style="margin: 0; color: #ffd700; font-size: 16px; font-weight: bold; line-height: 1.6;">
-            We look forward to serving you the best authentic dishes. See you soon at Vandi Kadai!
+            We look forward to serving you the best authentic dishes. See you soon at LIT!
           </p>
         </div>
 
@@ -158,7 +158,7 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
         `}
 
         <div style="border-top: 1px solid #2d3748; padding-top: 20px; margin-top: 30px; text-align: center; font-size: 11px; color: #718096;">
-          <p style="margin: 0;">© 2026 Vandi Kadai. All rights reserved.</p>
+          <p style="margin: 0;">© 2026 LIT. All rights reserved.</p>
           <p style="margin: 5px 0 0 0;">This is an automated message. Please do not reply directly to this email.</p>
         </div>
       </div>
@@ -323,7 +323,7 @@ app.post('/api/customer/register', async (req, res) => {
 
 // Root check route
 app.get('/', (req, res) => {
-  res.send('Vandi Kadai QR Scan API Server is running.');
+  res.send('LIT QR Scan API Server is running.');
 });
 
 // Server Start
