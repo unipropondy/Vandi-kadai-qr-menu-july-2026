@@ -151,7 +151,7 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
             <tr>
               <!-- Left Column: Food Graphic -->
               <td width="38%" style="vertical-align: middle; padding: 0; background-color: #162a4d; line-height: 0;">
-                <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=400&q=80" alt="LIT South Indian Dosa" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+                <img src="cid:foodImage" alt="LIT Specialty" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
               </td>
 
               <!-- Middle Column: Voucher Details -->
@@ -207,7 +207,14 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
           <p style="margin: 0;">This is an automated message. Please do not reply directly to this email.</p>
         </div>
       </div>
-    `
+    `,
+    attachments: [
+      {
+        filename: 'food.png',
+        path: path.join(__dirname, 'assets', 'food.png'),
+        cid: 'foodImage'
+      }
+    ]
   };
 
   try {
