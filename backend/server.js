@@ -154,8 +154,8 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
             <!-- Row 2: Main Content -->
             <tr>
               <!-- Left Column: Food Graphic -->
-              <td width="30%" style="vertical-align: middle; padding: 0; background-color: #1e355e; line-height: 0;">
-                <img src="cid:foodImage" alt="LIT Specialty" style="width: 100%; height: auto; min-height: 150px; object-fit: cover; display: block;" />
+              <td width="30%" style="vertical-align: middle; padding: 0; background-color: #1e355e; line-height: 0; height: 100%;">
+                <img src="cid:foodImage" alt="LIT Specialty" style="width: 100%; height: 100%; min-height: 150px; object-fit: cover; display: block;" height="100%" />
               </td>
 
               <!-- Middle Column: Voucher Details -->
