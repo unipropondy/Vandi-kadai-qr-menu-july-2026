@@ -143,14 +143,23 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
         <!-- Ticket Voucher Section -->
         <div style="background-color: #1e355e; border-radius: 12px; box-shadow: 0 10px 25px rgba(30, 53, 94, 0.15); overflow: hidden; display: block; margin: 0;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <!-- Row 1: Top Notches / Padding -->
+            <tr style="height: 10px; line-height: 0; font-size: 0;">
+              <td width="30%" style="background-color: #1e355e; padding: 0;">&nbsp;</td>
+              <td style="background-color: #1e355e; padding: 0;">&nbsp;</td>
+              <td width="20" style="background-color: #dce3e1; border-radius: 0 0 10px 10px; padding: 0;">&nbsp;</td>
+              <td width="80" style="background-color: #182c4f; padding: 0;">&nbsp;</td>
+            </tr>
+
+            <!-- Row 2: Main Content -->
             <tr>
               <!-- Left Column: Food Graphic -->
               <td width="30%" style="vertical-align: middle; padding: 0; background-color: #1e355e; line-height: 0;">
-                <img src="cid:foodImage" alt="LIT Specialty" style="width: 100%; height: auto; min-height: 170px; object-fit: cover; display: block;" />
+                <img src="cid:foodImage" alt="LIT Specialty" style="width: 100%; height: auto; min-height: 150px; object-fit: cover; display: block;" />
               </td>
 
               <!-- Middle Column: Voucher Details -->
-              <td style="padding: 15px; vertical-align: middle; text-align: left;">
+              <td style="padding: 10px 15px; vertical-align: middle; text-align: left; background-color: #1e355e;">
                 <div style="font-family: Georgia, serif; font-size: 15px; font-style: italic; color: #93c5fd; margin-bottom: 2px;">Promo Code</div>
                 <h2 style="font-size: 20px; font-weight: 800; color: #ffffff; margin: 0 0 6px 0; letter-spacing: 1px; text-transform: uppercase;">VOUCHER</h2>
                 
@@ -176,14 +185,9 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
                 `}
               </td>
 
-              <!-- Notch Divider Column -->
-              <td width="20" style="vertical-align: top; padding: 0; background-color: #1e355e; height: 170px; position: relative;">
-                <!-- Top Notch -->
-                <div style="width: 20px; height: 10px; background-color: #dce3e1; border-radius: 0 0 10px 10px; position: absolute; top: 0; left: 0;"></div>
-                <!-- Dashed Line -->
-                <div style="border-left: 2px dashed rgba(255, 255, 255, 0.3); position: absolute; top: 10px; bottom: 10px; left: 9px;"></div>
-                <!-- Bottom Notch -->
-                <div style="width: 20px; height: 10px; background-color: #dce3e1; border-radius: 10px 10px 0 0; position: absolute; bottom: 0; left: 0;"></div>
+              <!-- Divider Column -->
+              <td width="20" style="background-color: #1e355e; padding: 0; text-align: center; vertical-align: middle;">
+                <div style="border-left: 2px dashed rgba(255, 255, 255, 0.3); height: 120px; margin: 0 auto; width: 1px;"></div>
               </td>
 
               <!-- Right Column: Ticket Stub -->
@@ -192,6 +196,14 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
                   WELCOME REWARD
                 </div>
               </td>
+            </tr>
+
+            <!-- Row 3: Bottom Notches / Padding -->
+            <tr style="height: 10px; line-height: 0; font-size: 0;">
+              <td width="30%" style="background-color: #1e355e; padding: 0;">&nbsp;</td>
+              <td style="background-color: #1e355e; padding: 0;">&nbsp;</td>
+              <td width="20" style="background-color: #dce3e1; border-radius: 10px 10px 0 0; padding: 0;">&nbsp;</td>
+              <td width="80" style="background-color: #182c4f; padding: 0;">&nbsp;</td>
             </tr>
           </table>
         </div>
