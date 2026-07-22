@@ -6,70 +6,72 @@ function getPreviewHtml(name, promoCode, promoAmount) {
   const hasPromo = promoCode && promoCode.trim() !== '';
   
   return `
-      <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px 20px; background-color: #dce3e1; border-radius: 8px;">
+      <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px 10px; background-color: #dce3e1; border-radius: 8px;">
         <!-- Email Header -->
-        <div style="text-align: center; margin-bottom: 25px;">
-          <h1 style="color: #1e3a5f; margin: 0; font-size: 28px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">LIT</h1>
-          <p style="color: #64748b; margin: 4px 0 0 0; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Little India Twist</p>
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h1 style="color: #1e3a5f; margin: 0; font-size: 26px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">LIT</h1>
+          <p style="color: #64748b; margin: 4px 0 0 0; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Little India Twist</p>
         </div>
 
         <!-- Greeting -->
-        <div style="background-color: #ffffff; padding: 20px 25px; border-radius: 8px 8px 0 0; border-bottom: 1px solid #f1f5f9;">
-          <p style="font-size: 16px; line-height: 1.5; color: #1e293b; margin: 0;">
+        <div style="background-color: #ffffff; padding: 15px 20px; border-radius: 8px 8px 0 0; border-bottom: 1px solid #f1f5f9;">
+          <p style="font-size: 15px; line-height: 1.5; color: #1e293b; margin: 0;">
             Hello <strong>${name}</strong>,
           </p>
-          <p style="font-size: 14px; line-height: 1.5; color: #475569; margin: 6px 0 0 0;">
+          <p style="font-size: 13px; line-height: 1.5; color: #475569; margin: 6px 0 0 0;">
             Thank you for registering with <strong>LIT</strong>! We are excited to welcome you to our rewards program.
           </p>
         </div>
 
         <!-- Ticket Voucher Section -->
-        <div style="position: relative; background-color: #1e355e; border-radius: 12px; box-shadow: 0 10px 25px rgba(30, 53, 94, 0.15); overflow: hidden; display: block; margin: 0;">
-          
-          <!-- Top & Bottom Cutout Notches -->
-          <div style="position: absolute; top: -10px; right: 110px; width: 20px; height: 20px; background-color: #dce3e1; border-radius: 50%; z-index: 10;"></div>
-          <div style="position: absolute; bottom: -10px; right: 110px; width: 20px; height: 20px; background-color: #dce3e1; border-radius: 50%; z-index: 10;"></div>
-
+        <div style="background-color: #1e355e; border-radius: 12px; box-shadow: 0 10px 25px rgba(30, 53, 94, 0.15); overflow: hidden; display: block; margin: 0;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
-            <tr style="height: 180px;">
+            <tr>
               <!-- Left Column: Food Graphic -->
-              <td width="38%" style="vertical-align: middle; padding: 0; background-color: #1e355e; line-height: 0; height: 100%;">
-                <img src="assets/food.png" alt="LIT Specialty" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+              <td width="30%" style="vertical-align: middle; padding: 0; background-color: #1e355e; line-height: 0;">
+                <img src="assets/food.png" alt="LIT Specialty" style="width: 100%; height: auto; min-height: 170px; object-fit: cover; display: block;" />
               </td>
 
               <!-- Middle Column: Voucher Details -->
-              <td style="padding: 20px; vertical-align: middle; text-align: left;">
-                <div style="font-family: Georgia, serif; font-size: 18px; font-style: italic; color: #93c5fd; margin-bottom: 2px;">Promo Code</div>
-                <h2 style="font-size: 26px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">VOUCHER</h2>
+              <td style="padding: 15px; vertical-align: middle; text-align: left;">
+                <div style="font-family: Georgia, serif; font-size: 15px; font-style: italic; color: #93c5fd; margin-bottom: 2px;">Promo Code</div>
+                <h2 style="font-size: 20px; font-weight: 800; color: #ffffff; margin: 0 0 6px 0; letter-spacing: 1px; text-transform: uppercase;">VOUCHER</h2>
                 
                 ${hasPromo ? `
-                <p style="font-size: 11px; line-height: 1.4; color: #cbd5e1; margin: 0 0 15px 0;">
-                  Show this code at the counter to redeem your reward.
+                <p style="font-size: 11px; line-height: 1.4; color: #cbd5e1; margin: 0 0 10px 0;">
+                  Show code to redeem reward.
                 </p>
-                <div style="margin-bottom: 5px;">
-                  <span style="display: inline-block; background-color: rgba(255,255,255,0.1); border: 1.5px dashed #93c5fd; padding: 6px 16px; border-radius: 4px; font-size: 18px; font-weight: 700; color: #ffffff; letter-spacing: 2px;">
+                <div style="margin-bottom: 8px;">
+                  <span style="display: inline-block; background-color: rgba(255,255,255,0.1); border: 1.5px dashed #93c5fd; padding: 5px 12px; border-radius: 4px; font-size: 15px; font-weight: 700; color: #ffffff; letter-spacing: 1.5px;">
                     ${promoCode}
                   </span>
                 </div>
-                <div style="font-size: 22px; font-weight: 800; color: #38bdf8; margin-top: 10px;">
+                <div style="font-size: 18px; font-weight: 800; color: #38bdf8;">
                   $${parseFloat(promoAmount).toFixed(2)} OFF
                 </div>
                 ` : `
-                <p style="font-size: 13px; line-height: 1.5; color: #cbd5e1; margin: 0 0 10px 0;">
+                <p style="font-size: 11px; line-height: 1.4; color: #cbd5e1; margin: 0 0 8px 0;">
                   We look forward to serving you the best authentic dishes.
                 </p>
-                <div style="font-size: 18px; font-weight: 800; color: #38bdf8;">
+                <div style="font-size: 15px; font-weight: 800; color: #38bdf8;">
                   See you soon at LIT!
                 </div>
                 `}
               </td>
 
-              <!-- Separator Dashed line -->
-              <td width="1" style="border-left: 2px dashed rgba(255, 255, 255, 0.25); padding: 0;"></td>
+              <!-- Notch Divider Column -->
+              <td width="20" style="vertical-align: top; padding: 0; background-color: #1e355e; height: 170px; position: relative;">
+                <!-- Top Notch -->
+                <div style="width: 20px; height: 10px; background-color: #dce3e1; border-radius: 0 0 10px 10px; position: absolute; top: 0; left: 0;"></div>
+                <!-- Dashed Line -->
+                <div style="border-left: 2px dashed rgba(255, 255, 255, 0.3); position: absolute; top: 10px; bottom: 10px; left: 9px;"></div>
+                <!-- Bottom Notch -->
+                <div style="width: 20px; height: 10px; background-color: #dce3e1; border-radius: 10px 10px 0 0; position: absolute; bottom: 0; left: 0;"></div>
+              </td>
 
               <!-- Right Column: Ticket Stub -->
-              <td width="110" style="vertical-align: middle; text-align: center; padding: 15px 10px; background-color: #182c4f;">
-                <div style="writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; text-transform: uppercase; color: #93c5fd; font-weight: bold; letter-spacing: 2px; white-space: nowrap; display: inline-block;">
+              <td width="80" style="vertical-align: middle; text-align: center; padding: 10px 5px; background-color: #182c4f;">
+                <div style="writing-mode: vertical-rl; transform: rotate(180deg); font-size: 10px; text-transform: uppercase; color: #93c5fd; font-weight: bold; letter-spacing: 1.5px; white-space: nowrap; display: inline-block;">
                   WELCOME REWARD
                 </div>
               </td>
@@ -78,14 +80,14 @@ function getPreviewHtml(name, promoCode, promoAmount) {
         </div>
 
         <!-- Instructions bottom block -->
-        <div style="background-color: #ffffff; padding: 20px 25px; border-radius: 0 0 8px 8px; border-top: 1px solid #f1f5f9; text-align: center;">
-          <p style="font-size: 13px; line-height: 1.5; color: #64748b; margin: 0;">
+        <div style="background-color: #ffffff; padding: 15px 20px; border-radius: 0 0 8px 8px; border-top: 1px solid #f1f5f9; text-align: center;">
+          <p style="font-size: 12px; line-height: 1.5; color: #64748b; margin: 0;">
             Simply present your registered mobile number or show this email to our staff during your next visit to redeem your reward discount!
           </p>
         </div>
 
         <!-- Footer -->
-        <div style="text-align: center; margin-top: 25px; font-size: 11px; color: #94a3b8; line-height: 1.4;">
+        <div style="text-align: center; margin-top: 20px; font-size: 11px; color: #94a3b8; line-height: 1.4;">
           <p style="margin: 0 0 4px 0; font-weight: bold;">© 2026 UNIPRO . All rights reserved.</p>
           <p style="margin: 0;">This is an automated message. Please do not reply directly to this email.</p>
         </div>
