@@ -23,7 +23,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>© {new Date().getFullYear()} Vandi Kadai. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} UNIPRO . All rights reserved.</p>
       </footer>
     </div>
   );

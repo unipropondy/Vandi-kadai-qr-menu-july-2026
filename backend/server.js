@@ -158,7 +158,7 @@ async function sendWelcomeEmail(toEmail, name, promoCode, promoAmount) {
         `}
 
         <div style="border-top: 1px solid #2d3748; padding-top: 20px; margin-top: 30px; text-align: center; font-size: 11px; color: #718096;">
-          <p style="margin: 0;">© 2026 LIT. All rights reserved.</p>
+          <p style="margin: 0;">© 2026 UNIPRO . All rights reserved.</p>
           <p style="margin: 5px 0 0 0;">This is an automated message. Please do not reply directly to this email.</p>
         </div>
       </div>
